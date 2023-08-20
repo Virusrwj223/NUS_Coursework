@@ -19,3 +19,21 @@ function combo_price(combo_no){
 }
 
 //5
+function empty_order(){
+    return 0;
+}
+
+//6
+function add_to_order(order,combo){
+    return stringify(order)+stringify(combo);
+}
+
+//7
+function last_combo(order){
+    return order-math_trunc(order/10)*10;
+}
+
+//8
+function other_combos(order){
+    return math_trunc(order/10);
+}
