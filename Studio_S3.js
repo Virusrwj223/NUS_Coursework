@@ -1,3 +1,4 @@
+/*
 import {show, ribbon, blank, circle, square, beside, stack, beside_frac, stack_frac} from "rune";
 
 function moony_1(bottom_right){
@@ -28,6 +29,7 @@ function moony(n) {
 }
 
 show(moony(6));
+*/
 
 /*
 iterative process. time = O(n), space O(n). size refers to the value of the 
@@ -39,6 +41,15 @@ conumes negligable resources.
 //EXTRA PRAC//
 //////////////////////////////////////////////////////////////////////////////////////
 
+function fast_expt(b,n){
+    return n===1
+        ? b
+        :
+        n%2===0
+        ? fast_expt(b,n/2)*fast_expt(b,n/2)
+        : b*fast_expt(b,n-1);
+}
+
 function recursion(b,n){
     function fast_expt(b,n){
         return n===1
@@ -49,7 +60,11 @@ function recursion(b,n){
             : b*fast_expt(b,n-1);
     }
     
-    return fast_expt(b,n);
+    return n>0
+        ? fast_expt(b,n)
+        : n===0
+        ? 1
+        : 1/fast_expt(b,-n);
 }
 
 function iter(b,n){
@@ -66,9 +81,12 @@ function iter(b,n){
             
     }
         
-    
-    return fast_expt_iter(b,n,1,b);
-    
+    return n>0
+        ? fast_expt_iter(b,n,1,b)
+        : n===0
+        ? 1
+        : 1/fast_expt_iter(b,-n,1,b);
+
 }
 
-display(iter(3,6));
+display(recursion(3,1));
