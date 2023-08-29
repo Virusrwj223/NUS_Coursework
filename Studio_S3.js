@@ -39,13 +39,17 @@ conumes negligable resources.
 //EXTRA PRAC//
 //////////////////////////////////////////////////////////////////////////////////////
 
-function fast_expt(b,n){
-    return n===1
-        ? b
-        :
-        n%2===0
-        ? fast_expt(b,n/2)*fast_expt(b,n/2)
-        : b*fast_expt(b,n-1);
+function recursion(b,n){
+    function fast_expt(b,n){
+        return n===1
+            ? b
+            :
+            n%2===0
+            ? fast_expt(b,n/2)*fast_expt(b,n/2)
+            : b*fast_expt(b,n-1);
+    }
+    
+    return fast_expt(b,n);
 }
 
 function iter(b,n){
