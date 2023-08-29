@@ -41,52 +41,54 @@ conumes negligable resources.
 //EXTRA PRAC//
 //////////////////////////////////////////////////////////////////////////////////////
 
-function fast_expt(b,n){
-    return n===1
+function fast_expt(b, n){
+    
+    return n === 1
         ? b
         :
-        n%2===0
-        ? fast_expt(b,n/2)*fast_expt(b,n/2)
-        : b*fast_expt(b,n-1);
+        n % 2 === 0
+        ? fast_expt(b, n / 2) * fast_expt(b, n / 2)
+        : b * fast_expt(b, n - 1);
 }
 
-function recursion(b,n){
-    function fast_expt(b,n){
-        return n===1
+function recursion(b, n){
+    
+    function fast_expt(b, n){
+        return n === 1
             ? b
             :
-            n%2===0
-            ? fast_expt(b,n/2)*fast_expt(b,n/2)
-            : b*fast_expt(b,n-1);
+            n % 2 === 0
+            ? fast_expt(b, n / 2) * fast_expt(b, n / 2)
+            : b * fast_expt(b, n - 1);
     }
     
-    return n>0
-        ? fast_expt(b,n)
-        : n===0
+    return n > 0
+        ? fast_expt(b, n)
+        : n === 0
         ? 1
-        : 1/fast_expt(b,-n);
+        : 1 / fast_expt(b, -n);
 }
 
-function iter(b,n){
+function iter(b, n){
 
-    function fast_expt_iter(b,n,counter,current_answer){
+    function fast_expt_iter(b, n, counter, current_answer){
         
-        return n-counter===0
+        return n - counter === 0
             ? current_answer
-            : n-counter===1
-            ? b*current_answer
-            : counter%2===1
-            ? fast_expt_iter(b,n,counter*2,current_answer*current_answer)
-            :fast_expt_iter(b,n,counter+1,current_answer*b);
+            : n - counter === 1
+            ? b * current_answer
+            : counter % 2 === 1
+            ? fast_expt_iter(b, n, counter * 2, current_answer * current_answer)
+            :fast_expt_iter(b, n, counter + 1, current_answer * b);
             
     }
         
-    return n>0
-        ? fast_expt_iter(b,n,1,b)
-        : n===0
+    return n > 0
+        ? fast_expt_iter(b, n, 1, b)
+        : n === 0
         ? 1
-        : 1/fast_expt_iter(b,-n,1,b);
+        : 1 / fast_expt_iter(b, -n, 1, b);
 
 }
 
-display(recursion(3,1));
+display(iter(3,1));
